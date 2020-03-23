@@ -20,8 +20,8 @@ export interface IUser {
   email: string;
   firstName: string;
   lastName: string;
-  notifications: INotification[];
-  playlists: any[];
+  notifications?: INotification[];
+  playlists: IPlaylist[];
 }
 
 // - Notifications - //
@@ -29,4 +29,9 @@ export interface INotification {
   from: IUser;
   message: string;
   link: string;
+}
+
+export interface IPlaylist {
+  author: IUser;
+  title: string;
 }

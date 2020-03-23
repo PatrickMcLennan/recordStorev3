@@ -1,8 +1,6 @@
 import React, { createContext, Context, FC, ReactNode } from "react";
 import { INotification, IUser } from "dictionary";
 
-import { useApi } from "Hook/useContext";
-
 interface IProps {
   children: ReactNode;
 }
@@ -16,7 +14,6 @@ export const UserContext: Context<IUserContext> = createContext(
 );
 
 const UserContextProvider: FC<IProps> = ({ children }: IProps): JSX.Element => {
-  const { loginApiCall } = useApi();
 
   const notifications: INotification[] = [];
   const email: string = "user@user.com";
@@ -24,7 +21,7 @@ const UserContextProvider: FC<IProps> = ({ children }: IProps): JSX.Element => {
   const lastName: string = "Doe";
   const playlists: any[] = [];
 
-  const login: Function = () => loginApiCall;
+  const login: Function = () => console.log('hello');;
 
   return (
     <UserContext.Provider

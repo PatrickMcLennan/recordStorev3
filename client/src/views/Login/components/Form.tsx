@@ -1,5 +1,10 @@
 import React, { FC } from "react";
-import { FormContextValues, useForm, OnSubmit } from "react-hook-form";
+import {
+  FormContextValues,
+  useForm,
+  OnSubmit,
+  FormContext
+} from "react-hook-form";
 
 import * as S from "../Login.style";
 
@@ -9,8 +14,9 @@ interface IProps {
 
 const Form: FC<IProps> = ({ onSubmit }: IProps): JSX.Element => {
   const { errors, handleSubmit, register }: FormContextValues = useForm();
+
   return (
-    <form data-testid="form" onSubmit={handleSubmit(onSubmit)}>
+    <S.Form data-testid="form" onSubmit={handleSubmit(onSubmit)}>
       <S.Label error={errors.email} htmlFor="email">
         <span>
           Email: <sup data-testid="emailSup">*</sup>
@@ -34,14 +40,14 @@ const Form: FC<IProps> = ({ onSubmit }: IProps): JSX.Element => {
         />
       </S.Label>
 
-      <input
+      <S.Submit
         aria-label="Log In"
         data-testid="submit"
         title="Log In"
         type="submit"
         value="Log In"
       />
-    </form>
+    </S.Form>
   );
 };
 

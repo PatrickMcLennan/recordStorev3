@@ -7,7 +7,10 @@
       "Component/*": ["src/components/*"],
       "Context/*": ["src/contexts/*"],
       "Dictionary": ["src/dictionary.ts"],
+      "Font/*": ["src/assets/fonts/*"],
+      "GraphQL/*": ["src/graphql/*"],
       "Hook/*": ["src/hooks/*"],
+      "Image/*": ["src/assets/images/*"],
       "Root/*": ["src/*"],
       "Utility/*": ["src/utils/*"],
       "View/*": ["src/views/*"]

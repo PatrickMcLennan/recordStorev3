@@ -13,8 +13,10 @@ interface IProps extends RouteComponentProps {}
 export const ProtectedRoute: FC<{
   component: FC<IProps>;
   rest: RouteComponentProps;
-}> = ({ component: Component, rest }) => {
+}> = ({ component: Component, ...rest }) => {
   const isLoggedIn: boolean = useIsLoggedIn();
+
+  console.log(rest);
 
   return isLoggedIn ? (
     <Route
