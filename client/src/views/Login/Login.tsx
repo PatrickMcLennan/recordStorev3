@@ -6,7 +6,7 @@ import { LOG_IN } from "GraphQL/queries";
 
 import * as S from "./Login.style";
 
-const Login: FC = (): JSX.Element => {
+const Login: FC<{}> = (): JSX.Element => {
   const [onSubmit, { loading, error, data }] = useLazyQuery(LOG_IN);
 
   if (loading) return <p>loading</p>;

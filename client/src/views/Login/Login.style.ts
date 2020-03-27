@@ -53,8 +53,10 @@ export const Label = styled.label<ILabelProps>`
 `;
 
 export const Submit = styled.input`
-  margin-top: 6.25vh;
-  padding: 8px 10px;
+  ${({ theme: { fontLine } }) => fontLine(18, 22)}
+  display: block;
+  margin: 6.25vh auto 0 auto;
+  padding: 11px 30px;
   font-family: inherit;
   background: none;
   border: 2px solid white;

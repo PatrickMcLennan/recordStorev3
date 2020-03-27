@@ -8,3 +8,12 @@ export const LOG_IN: any = gql`
     }
   }
 `;
+
+export const CREATE_ACCOUNT: any = gql`
+  {
+    rates(currency: "USD") {
+      currency
+      rate
+    }
+  }
+`;

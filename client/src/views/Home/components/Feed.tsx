@@ -32,7 +32,7 @@ const Feed: FC<IProps> = ({ playlists }): JSX.Element => {
             animate={currentlyOpen.includes(key) ? `expanded` : `preview`}
             data-state={key}
             key={key}
-            layoutTransition={{ type: "spring", damping: 20, stiffness: 1000 }}
+            layoutTransition={{ type: "spring", damping: 20, stiffness: 2000 }}
             onClick={toggleOpen}
             variants={S.liVariants}
           >
@@ -44,13 +44,17 @@ const Feed: FC<IProps> = ({ playlists }): JSX.Element => {
               <S.FigureImage />
 
               <S.FigCaption>
-                <ol>
-                  {Array.from({ length: 10 }, () => null).map(
-                    (_: null, i: number) => (
-                      <li key={i}>{`${i}: Song #${i}`}</li>
-                    )
-                  )}
-                </ol>
+                <S.Ol>
+                  {Array.from(
+                    { length: currentlyOpen.includes(key) ? 10 : 4 },
+                    () => null
+                  ).map((_: null, i: number) => (
+                    <S.Li key={i}>
+                      <span>{`${i}`}</span>
+                      <span>Song title #{i}</span>
+                    </S.Li>
+                  ))}
+                </S.Ol>
               </S.FigCaption>
             </S.Figure>
           </S.Li>

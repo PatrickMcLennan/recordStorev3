@@ -5,14 +5,16 @@ const heightArray: number[] = [300, 325, 350, 375, 400, 425, 450];
 const heightNumber: Function = (): number =>
   Math.floor(Math.random() * (heightArray.length - 1));
 
+const height: number = heightArray[heightNumber()];
+
 export const liVariants = {
   expanded: {
     width: "calc(100% - 30px)",
-    height: `550px`
+    height: `${height * 2}px`
   },
   preview: {
     width: `calc(33% - 10px)`,
-    height: `${heightArray[heightNumber()]}px`
+    height: `${height}px`
   }
 };
 
@@ -21,14 +23,12 @@ export const Figure = styled.figure`
   flex-wrap: wrap;
   height: 100%;
   width: 100%;
-  border: 1px solid red;
 `;
 
 export const FigureAuthor = styled.span`
   ${({ theme: { fontLine } }) => fontLine(16, 20)};
   width: 100%;
-  margin: 10px 0;
-  border: 1px solid green;
+  margin: 10px 0 5px 0;
   font-family: "Lato", "Lato-Light", sans-serif;
   text-align: right;
   text-transform: uppercase;
@@ -36,7 +36,6 @@ export const FigureAuthor = styled.span`
 `;
 
 export const FigCaption = styled.figcaption`
-  border: 1px solid pink;
   flex: 1;
 `;
 
@@ -44,7 +43,6 @@ export const FigureImage = styled.img`
   display: inline-block;
   margin-top: 7.5px;
   width: calc(50% - 10px);
-  border: 1px solid blueviolet;
   height: 50%;
 `;
 
@@ -54,7 +52,7 @@ export const FigureTitle = styled.span`
   width: 50%;
   text-align: left;
   margin-left: 5px;
-  border: 1px solid yellow;
+  transform: translateY(-10%);
   vertical-align: top;
 `;
 
@@ -64,16 +62,36 @@ export const H1 = styled.h1`
   margin-top: 6vh;
 `;
 
+export const Li = styled(motion.li)`
+  ${({ theme: { fontLine } }) => fontLine(14, 18)}
+  position: relative;
+  display: inline-block;
+  border: 1px solid white;
+  width: 47.5%;
+  margin: 3px;
+  padding: 20px 15px;
+
+  span:first-of-type {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+
+  span:nth-of-type(2) {
+    ${({ theme: { fontLine } }) => fontLine(16, 20)};
+  }
+`;
+
+export const Ol = styled.ol`
+  ${({ theme: { flex } }) => flex(`stretch`, `flex-start`, `column`, `wrap`)};
+  flex: 1;
+  max-height: 50%;
+  overflow: hidden;
+`;
+
 export const Ul = styled.ul`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   margin-top: 50px;
-`;
-
-export const Li = styled(motion.li)`
-  display: inline-block;
-  border: 1px solid white;
-  margin: 3px;
-  padding: 15px;
 `;

@@ -54,8 +54,8 @@ test("Login Form Denial", async () => {
   changeInput(email, mockEmail);
   await fakeSubmit(form);
 
-  expect(email.value).toBe(mockEmail);
-  expect(password.value).toBe("");
+  expect(email).toHaveValue(mockEmail);
+  expect(password).toHaveValue("");
   expect(onSubmit).not.toHaveBeenCalled();
 
   // - Denies Empty Email Field - //
@@ -63,8 +63,8 @@ test("Login Form Denial", async () => {
   changeInput(password, mockPassword);
   await fakeSubmit(form);
 
-  expect(email.value).toBe("");
-  expect(password.value).toBe(mockPassword);
+  expect(email).toHaveValue("");
+  expect(password).toHaveValue(mockPassword);
   expect(onSubmit).not.toHaveBeenCalled();
 });
 
