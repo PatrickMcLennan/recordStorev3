@@ -1,9 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, ReactChildren } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Route, Switch, useLocation } from "react-router-dom";
 import MountTransition from "./MountTransition";
 
 interface IRoutesProps {
+  children: ReactChildren;
   exitBeforeEnter?: boolean;
   initial?: boolean;
 }
@@ -24,7 +25,7 @@ export const RouteTransition: FC<IProps> = ({
   slideUp = 0,
   ...rest
 }) => (
-  <Route exact={exact}>
+  <Route exact={exact} {...rest}>
     <MountTransition slide={slide} slideUp={slideUp}>
       {children}
     </MountTransition>

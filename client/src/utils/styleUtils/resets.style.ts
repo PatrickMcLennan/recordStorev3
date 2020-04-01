@@ -1,7 +1,7 @@
 import { createGlobalStyle, GlobalStyleComponent } from "styled-components";
 import { variables } from "./variables.style";
 import { mixins } from "./mixins.style";
-import background from "Image/background.jpg";
+import * as background from "Image/background.jpg";
 
 import LATO from "Font/Lato-Black.ttf";
 import LATO_LIGHT from "Font/Lato-Light.ttf";

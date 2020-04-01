@@ -21,7 +21,7 @@ export interface IUser {
   firstName: string;
   lastName: string;
   notifications?: INotification[];
-  playlists: IPlaylist[];
+  playlists?: IPlaylist[];
 }
 
 // - Notifications - //

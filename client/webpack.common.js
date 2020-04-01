@@ -7,13 +7,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpg|gif)$/i,
         use: [
+          "file-loader",
           {
-            loader: "url-loader",
-            options: {
-              limit: 25000
-            }
+            loader: `image-webpack-loader`
           }
         ]
       },

@@ -1,12 +1,21 @@
-import React, { createContext, Context, FC, ReactNode } from "react";
-import { INotification, IUser } from "dictionary";
+import React, {
+  createContext,
+  Context,
+  FC,
+  ReactChildren,
+  useReducer,
+  Dispatch
+} from "react";
+import { IUser } from "dictionary";
+import { initialUser, userReducer, IReducerArgs } from "./utils/userReducer";
 
 interface IProps {
-  children: ReactNode;
+  children: ReactChildren;
 }
 
 interface IUserContext extends IUser {
   login: Function;
+  userDispatch: Dispatch<IReducerArgs>;
 }
 
 export const UserContext: Context<IUserContext> = createContext(
@@ -14,19 +23,12 @@ export const UserContext: Context<IUserContext> = createContext(
 );
 
 const UserContextProvider: FC<IProps> = ({ children }: IProps): JSX.Element => {
+  const [userState, userDispatch] = useReducer(userReducer, initialUser);
 
-  const notifications: INotification[] = [];
-  const email: string = "user@user.com";
-  const firstName: string = "John";
-  const lastName: string = "Doe";
-  const playlists: any[] = [];
-
-  const login: Function = () => console.log('hello');;
+  const login: Function = () => console.log("hello");
 
   return (
-    <UserContext.Provider
-      value={{ email, firstName, lastName, login, notifications, playlists }}
-    >
+    <UserContext.Provider value={{ login, userDispatch, ...userState }}>
       {children}
     </UserContext.Provider>
   );

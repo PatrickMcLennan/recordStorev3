@@ -1,17 +1,20 @@
 import React, { FC, useState, Dispatch, SetStateAction } from "react";
 import { IPlaylist } from "dictionary";
 
+import { useUser } from "Hook/useContext";
+
 import * as S from "../Home.style";
 
 interface IProps {
-  playlists: IPlaylist[];
+  homeDispatch: Dispatch<any>;
 }
 
-const Feed: FC<IProps> = ({ playlists }): JSX.Element => {
+const Feed: FC<IProps> = ({ homeDispatch }): JSX.Element => {
   const [currentlyOpen, setCurrentlyOpen]: [
     number[],
     Dispatch<SetStateAction<number[]>>
   ] = useState([0]);
+  const { playlists } = useUser();
 
   const toggleOpen = ({ currentTarget: { dataset } }) =>
     setCurrentlyOpen((prevOpen: number[]): number[] => {

@@ -1,25 +1,22 @@
-import React, { FC } from "react";
-import StackGrid from "react-stack-grid";
-import { IPlaylist } from "dictionary";
+import React, { FC, useReducer } from "react";
 
 import Feed from "./components/Feed";
+import Modal from "./components/Modal";
 
-import { IUser } from "dictionary";
-
-import { mockUsers } from "Utility/mockData";
-
+import { homeState as initialState, homeReducer } from "./utils/homeReducer";
 import * as S from "./Home.style";
 
-const playlists = mockUsers.map((user: IUser, i: number) => ({
-  author: user,
-  title: `playlist-${i}`
-}));
-
 const Home: FC = (): JSX.Element => {
+  const [homeState, homeDispatch] = useReducer(homeReducer, initialState);
   return (
     <>
       <S.H1 data-testid="h1">Your Feed</S.H1>
-      <Feed playlists={playlists} />
+      <Feed homeDispatch={homeDispatch} />
+      <Modal
+        currentPlaylist={homeState.currentPlaylist}
+        homeDispatch={homeDispatch}
+        isOpen={homeState.modalOpen}
+      />
     </>
   );
 };

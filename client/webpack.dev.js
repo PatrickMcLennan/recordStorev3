@@ -11,7 +11,6 @@ module.exports = merge(common, {
   entry: ["babel-polyfill", "./src/index.ts"],
   output: {
     path: path.resolve(__dirname, "public"),
-    publicPath: "/",
     filename: "app.js"
   },
   devServer: {

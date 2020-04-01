@@ -10,10 +10,13 @@ const height: number = heightArray[heightNumber()];
 export const liVariants = {
   expanded: {
     width: "calc(100% - 30px)",
-    height: `${height * 2}px`
+    height: `${height * 2}px`,
+    position: `absolute`,
+    top: `0px`
   },
   preview: {
-    width: `calc(33% - 10px)`,
+    position: `static`,
+    width: `40%`,
     height: `${height}px`
   }
 };
@@ -67,9 +70,10 @@ export const Li = styled(motion.li)`
   position: relative;
   display: inline-block;
   border: 1px solid white;
-  width: 47.5%;
+  width: 50%;
   margin: 3px;
   padding: 20px 15px;
+  background-color: rgba(0, 0, 0, 0.3);
 
   span:first-of-type {
     position: absolute;
